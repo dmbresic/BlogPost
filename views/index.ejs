@@ -1,0 +1,23 @@
+<!-- Acts as base for form, will allow creation of post and grab information from server -->
+<%- include("partials/header.ejs") %>
+
+<form action="/submit" method="post">
+    <label for="name">Name: </label><br>
+    <input type="text" id="name" name="name"><br>
+
+    <label for="review">Enter your review below: </label><br>
+    <textarea rows="5" cols="40" type="text" id="review" name="review"></textarea>
+    <br>
+    <br>
+    <button class="button" type="submit">Post Review<i class="fa-solid fa-share"></i> </button>
+</form>
+
+<br><br>
+
+ <% if(locals.name && locals.review) {%>
+<p>Name: <%= name %></p>
+<p>Review: <%= review %></p>
+<% } else{%>
+    <p>No Reviews Currently</p>
+    <%} %>
+<%- include("partials/footer.ejs") %>
