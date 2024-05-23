@@ -21,10 +21,10 @@ app.post("/submit", (req, res)=>{
 
     res.render("index.ejs", data)
 
-    console.log(name)
-    console.log(review)
+    console.log("Name: " + name)
+    console.log("Review: " + review)
 })
 
 app.listen(port, ()=>{
-    console.log(`application started on ${port}`);
+    console.log(`application started on port: ${port}`);
 })
