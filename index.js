@@ -11,6 +11,8 @@ app.get("/", (req, res)=>{
     res.render("index.ejs");
 })
 
+const postList = [];
+
 app.post("/submit", (req, res)=>{
     const name = req.body.name;
     const review = req.body.review;
@@ -19,10 +21,21 @@ app.post("/submit", (req, res)=>{
         review: review
     }
 
+    const summary = name + ": " + review;
+
+    postList.push(summary);
+
     res.render("index.ejs", data)
 
     console.log("Name: " + name)
     console.log("Review: " + review)
+})
+
+app.get("/viewAll", (req, res)=>{
+    const data = {postList: postList
+    }
+
+    res.render("viewAll.ejs", data)
 })
 
 app.listen(port, ()=>{

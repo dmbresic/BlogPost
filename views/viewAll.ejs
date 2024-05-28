@@ -1,0 +1,14 @@
+<!-- Acts as base for form, will allow creation of post and grab information from server -->
+<%- include("partials/header.ejs") %>
+
+
+ <% if(locals.postList) {%>
+    <% for(let i = 0; i < postList.length; i++){ %>
+        <ul>
+            <li><%= postList[i] %></li><br>
+        </ul>
+        <% } %>
+<% } else{%>
+    <p>No Reviews Currently</p>
+    <%} %>
+<%- include("partials/footer.ejs") %>
