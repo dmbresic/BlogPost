@@ -11,7 +11,7 @@ app.get("/", (req, res)=>{
     res.render("index.ejs");
 })
 
-const postList = [];
+var postList = [];
 
 //Random ID generation for posts, need to add to page and pass to data for function on deletion
 function generateId(){
@@ -62,7 +62,7 @@ app.post("/submit", (req, res)=>{
     }
 
     //verify that the object is created
-    console.log(summary);
+    // console.log(summary);
 
     //add to list of objects so that it can be displayed, this is a global variable
     postList.push(summary);
@@ -89,17 +89,23 @@ app.post("/viewAll/updateList", (req, res)=>{
 
     //want to make this more a filter as opposed to loop for time complexity purposes
     //currently loops through the posts.
-    for(let i = 0; i < postList.length; i++){
+    // for(let i = 0; i < postList.length; i++){
 
-        //what is it grabbing
-        console.log(postList[i]);
-        if(postList[i].postId === find){
-            delete[postList[i]]
-        }
-    }
+    //     //what is it grabbing
+    //     // console.log(postList[i]);
+    //     if(postList[i].postId === find){
+    //         delete[postList[i]]
+    //     }
+    // }
+
+    var updatedPostList = postList.filter((post) => {
+        post.postId === find;
+    });
+
+    console.log(postList);
 
     //does this update post list?
-    const data = {postList: postList
+    const data = {postList: updatedPostList
     }
 
     res.render("viewAll.ejs", data)

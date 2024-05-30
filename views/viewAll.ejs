@@ -2,7 +2,7 @@
 <%- include("partials/header.ejs") %>
 
 
- <% if(locals.postList) {%>
+ <% if(locals.postList || locals.updatedPostList) {%>
     <% for(let i = 0; i < postList.length; i++){ %>
         <ul>
             <li>Posted by: <%= postList[i].name %></li>
