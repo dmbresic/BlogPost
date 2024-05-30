@@ -5,10 +5,18 @@
  <% if(locals.postList) {%>
     <% for(let i = 0; i < postList.length; i++){ %>
         <ul>
-            <li><%= postList[i] %></li><br>
+            <li>Posted by: <%= postList[i].name %></li>
+            <li>Comment: <%= postList[i].review  %></li>
+            <li class="is-size-6"> Post ID: <%= postList[i].postId %></li><br>
         </ul>
         <% } %>
 <% } else{%>
     <p>No Reviews Currently</p>
     <%} %>
+
+    <form action="/viewAll/updateList" method="post">
+        <label for="postId">Post ID: </label><br>
+        <input type="text" name="postId" id="postId">
+        <button class="button" type="submit">Delete</button>
+    </form>
 <%- include("partials/footer.ejs") %>
