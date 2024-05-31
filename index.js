@@ -87,6 +87,8 @@ app.post("/viewAll/updateList", (req, res)=>{
     //testing what the object if finding in this variable
     console.log(find);
 
+    console.log("Does this have any data? " + postList)
+
     //want to make this more a filter as opposed to loop for time complexity purposes
     //currently loops through the posts.
     // for(let i = 0; i < postList.length; i++){
@@ -98,14 +100,35 @@ app.post("/viewAll/updateList", (req, res)=>{
     //     }
     // }
 
-    var updatedPostList = postList.filter((post) => {
-        post.postId === find;
-    });
+    //this is suspected to be where my issue lies for this page.
+    var updatedPostList = [];
 
-    console.log(postList);
+    //update the new list and see with the data from the other list.
+    for(let i = 0; i < postList.length; i++){
+        updatedPostList[i] = postList[i];
+    }
+
+    //try to see where the list is storing information and what information
+    console.log("This is the original list: " + updatedPostList);
+
+    //-------FILTER does not appear to be working, attempt to discover limitation or error
+    // updatedPostList.filter((post) => {
+    //     post.postId !== find;
+    // });
+
+    if(postList.length > 1){
+        postList = postList.pop(postList.length - 1);
+    }
+    
+
+    console.log("This is with a pop added " + postList);
+
+    // postList = updatedPostList;
+
+    // console.log(updatedPostList);
 
     //does this update post list?
-    const data = {postList: updatedPostList
+    const data = {postList: postList
     }
 
     res.render("viewAll.ejs", data)
